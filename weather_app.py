@@ -21,23 +21,21 @@ def get_weather(city, api_key):
         return None
 
 
-# Ask the user for city names
 cities_input = input("Enter city names separated by commas: ")
 
-# Split into a list, then clean up extra spaces
 raw_cities = cities_input.split(",")
 cities = []
 for city in raw_cities:
     cities.append(city.strip())
 
-# Fetch weather for each city and store valid results
+
 temps = {}
 for city in cities:
     temp = get_weather(city, api_key)
     if temp is not None:
         temps[city] = temp
 
-# Compare results, only if we got at least one valid reading
+
 if temps:
     hottest_city = max(temps, key=temps.get)
     coldest_city = min(temps, key=temps.get)
